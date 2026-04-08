@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | DS-24</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="checkout.css">
+
+    <!-- Maika Pixel Universal Script -->
+    <script>
+    !function(m,a,i,k,e,p,x,l){m.MaikaPixelObject=e;m[e]=m[e]||function(){
+    (m[e].q=m[e].q||[]).push(arguments)};m[e].l=1*new Date();
+    p=a.createElement(i);x=a.getElementsByTagName(i)[0];
+    p.async=1;p.src=k;x.parentNode.insertBefore(p,x)
+    }(window,document,'script','http://localhost:3000/tracker.js','maika');
+
+    // Initialize with your Pixel ID
+    maika('init', '1247062284077136');
+
+    // Automatically track PageView on load
+    maika('track', 'PageView', {
+      page_name: document.title,
+      page_id: window.location.pathname,
+      source_url: window.location.href,
+      browser_name: navigator.appName,
+      user_agent: navigator.userAgent
+      // Browser ID (_fbp), Click ID (_fbc) will be handled by tracker.js
+    });
+    </script>
+    <!-- End Maika Pixel Universal Script -->
+</head>
+<body>
+
+    <!-- SECTION 1 — PRIMARY TOP BAR (Navbar) -->
+    <header class="primary-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">DS-24</a>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="products.html" class="nav-link">
+                            <i class="fa-solid fa-box-open"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="special-offers.html" class="nav-link">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>Special Offers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-right">
+                <div class="wishlist-nav-wrapper" id="wishlistNavBtn">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="wishlist-badge" id="wishlistBadge">0</span>
+                </div>
+                <a href="cart.html" class="cart-wrapper">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2 — SECONDARY TOP BAR (Search Bar Row) -->
+    <div class="secondary-navbar">
+        <div class="search-container">
+            <div class="category-wrapper">
+                <button class="category-btn" id="categoryBtn">
+                    <i class="fa-solid fa-th-large"></i>
+                    <span>Categories</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="category-dropdown" id="categoryDropdown">
+                    <ul class="category-list">
+                        <li class="category-item" data-category="Electronics">
+                            <a href="products.html?category=electronics">Electronics <i class="fa-solid fa-chevron-right"></i></a>
+                        </li>
+                        <li class="category-item" data-category="Clothing">
+                            <a href="products.html?category=clothing">Clothing <i class="fa-solid fa-chevron-right"></i></a>
+                        </li>
+                        <li class="category-item" data-category="Home & Kitchen">
+                            <a href="products.html?category=home">Home & Kitchen</a>
+                        </li>
+                        <li class="category-item" data-category="Toys">
+                            <a href="products.html?category=toys">Toys</a>
+                        </li>
+                        <li class="category-item" data-category="Beauty">
+                            <a href="products.html?category=beauty">Beauty</a>
+                        </li>
+                        <li class="category-item" data-category="Sports">
+                            <a href="products.html?category=sports">Sports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search products..." id="searchInput">
+            </div>
+        </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i></a></li>
+                <li><i class="fa-solid fa-chevron-right"></i></li>
+                <li>Checkout</li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="checkout-main">
+        <div class="container checkout-grid">
+            
+            <!-- LEFT COLUMN -->
+            <div class="checkout-left">
+                
+                <!-- PANEL 1: SHIPPING & BILLING -->
+                <div class="checkout-panel">
+                    <div class="panel-title-row">
+                        <i class="fa-solid fa-square"></i>
+                        <h2>SHIPPING & BILLING</h2>
+                    </div>
+                    
+                    <form id="checkout-form" class="checkout-form">
+                        <div class="form-row grid-2">
+                            <div class="form-group">
+                                <label for="first-name">First Name*</label>
+                                <input type="text" id="first-name" name="firstName" placeholder="First Name*" required>
+                                <span class="error-msg" id="error-first-name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name*</label>
+                                <input type="text" id="last-name" name="lastName" placeholder="Last Name*" required>
+                                <span class="error-msg" id="error-last-name"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address*</label>
+                            <input type="text" id="address" name="address" placeholder="Address*" required>
+                            <span class="error-msg" id="error-address"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mobile">Mobile*</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="Mobile*" required>
+                            <span class="error-msg" id="error-mobile"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" name="email" placeholder="Email*" required>
+                            <span class="error-msg" id="error-email"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <textarea id="comment" name="comment" rows="5" placeholder="Order notes (optional)"></textarea>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- PANEL 2: PAYMENT & DELIVERY -->
+                <div class="payment-delivery-grid">
+                    <!-- PAYMENT METHOD -->
+                    <div class="checkout-panel small-panel">
+                        <div class="panel-title-row">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <h3>Payment Method</h3>
+                        </div>
+                        <p class="panel-subtitle">Select a payment method</p>
+                        <hr class="panel-divider">
+                        
+                        <div class="radio-group">
+                            <label class="custom-radio">
+                                <input type="radio" name="payment-method" value="cod" checked>
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">Cash on Delivery</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="payment-method" value="online">
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">Online Payment</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="payment-method" value="pos">
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">POS on Delivery</span>
+                            </label>
+                        </div>
+                        
+                        <div class="we-accept-section">
+                          <p class="we-accept-label">We Accept :</p>
+                          <div class="payment-logos-row">
+
+                            <!-- Cash on Delivery — text logo style -->
+                            <div class="pay-badge pay-cash">
+                              <span class="pay-cash-top">CASH ON</span>
+                              <span class="pay-cash-bottom">DELIVERY</span>
+                            </div>
+
+                            <!-- Mastercard — CSS logo -->
+                            <div class="pay-badge pay-mastercard" title="Mastercard">
+                              <div class="mc-circle mc-left"></div>
+                              <div class="mc-circle mc-right"></div>
+                              <span class="mc-text">mastercard</span>
+                            </div>
+
+                            <!-- Visa — text logo style -->
+                            <div class="pay-badge pay-visa" title="Visa">
+                              <span class="visa-text">VISA</span>
+                            </div>
+
+                            <!-- bKash -->
+                            <div class="pay-badge pay-bkash" title="bKash">
+                              <span class="bkash-b">b</span>
+                              <span class="bkash-rest">Kash</span>
+                            </div>
+
+                            <!-- Nagad -->
+                            <div class="pay-badge pay-nagad" title="Nagad">
+                              <span class="nagad-text">nagad</span>
+                            </div>
+
+                            <!-- Rocket -->
+                            <div class="pay-badge pay-rocket" title="Rocket">
+                              <i class="fa-solid fa-rocket"></i>
+                              <span class="rocket-text">Rocket</span>
+                            </div>
+
+                          </div>
+                        </div>
+                    </div>
+                    
+                    <!-- DELIVERY METHOD -->
+                    <div class="checkout-panel small-panel">
+                        <div class="panel-title-row">
+                            <i class="fa-solid fa-truck"></i>
+                            <h3>Delivery Method</h3>
+                        </div>
+                        <p class="panel-subtitle">Select a delivery method</p>
+                        <hr class="panel-divider">
+                        
+                        <div class="radio-group">
+                            <label class="custom-radio">
+                                <input type="radio" name="delivery-method" value="home" checked>
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">Home Delivery</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="delivery-method" value="pickup">
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">Store Pickup (Free)</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="delivery-method" value="express">
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">Request Express (৳200)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PANEL 3: PRODUCTS SUMMARY -->
+                <div class="checkout-panel products-summary-panel">
+                    <div class="panel-title-row">
+                        <i class="fa-solid fa-square"></i>
+                        <h3>Products</h3>
+                    </div>
+                    
+                    <div id="checkout-product-list" class="checkout-product-list">
+                        <!-- Products will be dynamically rendered here -->
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- RIGHT COLUMN: ORDER SUMMARY -->
+            <div class="checkout-right">
+                <div class="order-summary-sticky">
+                    
+                    <!-- RECEIPT HEADER -->
+                    <div class="receipt-header">
+                        <h2>Order Summary</h2>
+                        <div class="receipt-divider"></div>
+                    </div>
+                    
+                    <!-- COUPON SECTION -->
+                    <div class="coupon-section">
+                        <div class="coupon-header">
+                            <h3>Get Some Extra</h3>
+                            <p>Use coupon/voucher/star points</p>
+                        </div>
+                        
+                        <div class="coupon-tabs">
+                            <button class="coupon-tab active" id="tab-coupon">
+                                <i class="fa-solid fa-tag"></i> Coupon
+                            </button>
+                            <button class="coupon-tab" id="tab-voucher">
+                                <i class="fa-solid fa-gift"></i> Gift Voucher
+                            </button>
+                        </div>
+                        
+                        <div class="coupon-input-row">
+                            <input type="text" id="coupon-input" placeholder="Promo / Coupon Code">
+                            <button id="btn-apply-coupon">Apply</button>
+                        </div>
+                    </div>
+                    
+                    <!-- SUMMARY NUMBERS -->
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span class="label">Sub-Total:</span>
+                            <span class="value" id="checkout-subtotal">৳0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="label" id="delivery-label-text">Home Delivery:</span>
+                            <span class="value" id="checkout-delivery">৳0</span>
+                        </div>
+                        <div class="summary-total">
+                            <span class="label">Total:</span>
+                            <span class="value" id="checkout-total">৳0</span>
+                        </div>
+                        
+                        <!-- TERMS CHECKBOX -->
+                        <div class="terms-row">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="terms-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <p class="terms-text">
+                                I have read and agree to the 
+                                <span class="link">Terms and Conditions</span>, 
+                                <span class="link">Privacy Policy</span> and 
+                                <span class="link">Refund and Return Policy</span>.
+                            </p>
+                        </div>
+                        
+                        <!-- CONFIRM BUTTON -->
+                        <button class="btn-confirm-order" id="btn-confirm-order-action">
+                            Confirm Order
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <div class="footer-btn-group">
+                        <a href="tel:+8801XXX-XXXXXX" class="footer-btn">
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="divider"></div>
+                            <span class="red-text">+880 1XXX-XXXXXX</span>
+                        </a>
+                        <a href="mailto:support@ds24.com" class="footer-btn">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="divider"></div>
+                            <span class="red-text">support@ds24.com</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <ul class="footer-links">
+                        <li>Affiliate Marketing</li>
+                        <li>Online Delivery</li>
+                        <li>Return Policy</li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li>Privacy Policy</li>
+                        <li>Support</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect Us</h3>
+                    <div class="store-info">
+                        <p class="store-name">DS-24 Store</p>
+                        <p class="store-address">Basundhara R/A, 112/A, K-Block, Dhaka 1229</p>
+                        <a href="https://maps.google.com" target="_blank" class="map-link">📍 View on Google Maps</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-row-2">
+                <div class="app-download">
+                    <p>Download our app and get better results:</p>
+                    <a href="#" class="play-store-btn">
+                        <i class="fa-brands fa-google-play"></i>
+                        <span>Download on Google Play</span>
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-copyright">
+                <p>DS-24 | All rights reserved</p>
+                <p>Powered by: 24 Digital Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success | DS-24</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Maika Pixel Universal Script -->
+    <script>
+    !function(m,a,i,k,e,p,x,l){m.MaikaPixelObject=e;m[e]=m[e]||function(){
+    (m[e].q=m[e].q||[]).push(arguments)};m[e].l=1*new Date();
+    p=a.createElement(i);x=a.getElementsByTagName(i)[0];
+    p.async=1;p.src=k;x.parentNode.insertBefore(p,x)
+    }(window,document,'script','http://localhost:3000/tracker.js','maika');
+
+    // Initialize with your Pixel ID
+    maika('init', '1247062284077136');
+
+    // Automatically track PageView on load
+    maika('track', 'PageView', {
+      page_name: document.title,
+      page_id: window.location.pathname,
+      source_url: window.location.href,
+      browser_name: navigator.appName,
+      user_agent: navigator.userAgent
+      // Browser ID (_fbp), Click ID (_fbc) will be handled by tracker.js
+    });
+    </script>
+    <!-- End Maika Pixel Universal Script -->
+    <style>
+        :root {
+            --invoice-bg: #FFFFFF;
+            --invoice-border: #E5E7EB;
+            --invoice-text: #1F2937;
+            --invoice-muted: #6B7280;
+            --invoice-accent: #2563EB;
+            --invoice-success: #10B981;
+        }
+
+        .success-main {
+            background-color: #F3F4F6;
+            min-height: 100vh;
+            padding: 60px 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--invoice-bg);
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Success Header */
+        .invoice-success-header {
+            background: var(--invoice-success);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .invoice-success-header i {
+            font-size: 60px;
+            margin-bottom: 16px;
+            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        .invoice-success-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .invoice-success-header p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+
+        /* Invoice Body */
+        .invoice-body {
+            padding: 40px;
+        }
+
+        .invoice-top-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #F3F4F6;
+            padding-bottom: 20px;
+        }
+
+        .invoice-id h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--invoice-muted);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .invoice-id p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--invoice-text);
+        }
+
+        .invoice-date {
+            text-align: right;
+        }
+
+        .invoice-date h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--invoice-muted);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .invoice-date p {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--invoice-text);
+        }
+
+        /* Billing Info */
+        .invoice-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .info-block h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--invoice-muted);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #F3F4F6;
+            padding-bottom: 8px;
+        }
+
+        .info-block p {
+            font-size: 15px;
+            color: var(--invoice-text);
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .info-block strong {
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* Items Table */
+        .invoice-table-wrapper {
+            margin-bottom: 40px;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .invoice-table th {
+            text-align: left;
+            padding: 12px;
+            background: #F9FAFB;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--invoice-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .invoice-table td {
+            padding: 16px 12px;
+            border-bottom: 1px solid #F3F4F6;
+            font-size: 15px;
+            color: var(--invoice-text);
+        }
+
+        .invoice-table .col-item { width: 50%; }
+        .invoice-table .col-qty { width: 15%; text-align: center; }
+        .invoice-table .col-price { width: 15%; text-align: right; }
+        .invoice-table .col-total { width: 20%; text-align: right; font-weight: 700; }
+
+        /* Summary */
+        .invoice-summary {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .summary-box {
+            width: 300px;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 15px;
+        }
+
+        .summary-line.total {
+            margin-top: 12px;
+            padding-top: 16px;
+            border-top: 2px solid var(--invoice-text);
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--invoice-accent);
+        }
+
+        /* Actions */
+        .invoice-actions {
+            padding: 40px;
+            background: #F9FAFB;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            border-top: 1px solid #F3F4F6;
+        }
+
+        .btn-invoice {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-download {
+            background: var(--invoice-accent);
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: #1D4ED8;
+            transform: translateY(-2px);
+        }
+
+        .btn-home {
+            background: white;
+            color: var(--invoice-text);
+            border: 1.5px solid #E5E7EB;
+        }
+
+        .btn-home:hover {
+            background: #F3F4F6;
+        }
+
+        /* Print Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .invoice-container, .invoice-container * {
+                visibility: visible;
+            }
+            .invoice-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+            .invoice-actions {
+                display: none;
+            }
+            .primary-navbar {
+                display: none;
+            }
+            .success-main {
+                padding: 0;
+                background: white;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .invoice-info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .invoice-top-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .invoice-date {
+                text-align: left;
+            }
+            .invoice-body {
+                padding: 24px;
+            }
+            .invoice-actions {
+                flex-direction: column;
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRIMARY NAVBAR -->
+    <header class="primary-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">DS-24</a>
+            </div>
+            <div class="nav-right">
+                <a href="cart.html" class="cart-wrapper">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="success-main">
+        <div class="invoice-container" id="invoice">
+            <!-- Success Header -->
+            <div class="invoice-success-header">
+                <i class="fa-solid fa-circle-check"></i>
+                <h1>Thank You for Your Order!</h1>
+                <p>Your order has been placed successfully.</p>
+            </div>
+
+            <div class="invoice-body">
+                <!-- Top Row -->
+                <div class="invoice-top-row">
+                    <div class="invoice-id">
+                        <h2>Order ID</h2>
+                        <p id="invoice-order-id">ORD-XXXXXXXX</p>
+                    </div>
+                    <div class="invoice-date">
+                        <h2>Order Date</h2>
+                        <p id="invoice-date">April 03, 2026</p>
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="invoice-info-grid">
+                    <div class="info-block">
+                        <h3>Shipping Address</h3>
+                        <p><strong id="cust-name"></strong></p>
+                        <p id="cust-address"></p>
+                        <p id="cust-location"></p>
+                        <p>Phone: <span id="cust-phone"></span></p>
+                        <p id="email-row">Email: <span id="cust-email"></span></p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Order Details</h3>
+                        <p>Payment Method: <strong id="pay-method">Cash on Delivery</strong></p>
+                        <p>Delivery Method: <strong id="del-method">Home Delivery</strong></p>
+                        <p>Status: <strong style="color: #10B981;">Processing</strong></p>
+                    </div>
+                </div>
+
+                <!-- Items Table -->
+                <div class="invoice-table-wrapper">
+                    <table class="invoice-table">
+                        <thead>
+                            <tr>
+                                <th class="col-item">Product</th>
+                                <th class="col-qty">Qty</th>
+                                <th class="col-price">Price</th>
+                                <th class="col-total">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoice-items">
+                            <!-- Items injected here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Summary -->
+                <div class="invoice-summary">
+                    <div class="summary-box">
+                        <div class="summary-line">
+                            <span>Sub-Total</span>
+                            <span id="inv-subtotal">৳0</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Delivery Charge</span>
+                            <span id="inv-delivery">৳0</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Grand Total</span>
+                            <span id="inv-total">৳0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="invoice-actions">
+                <button onclick="window.print()" class="btn-invoice btn-download">
+                    <i class="fa-solid fa-download"></i> Download Invoice
+                </button>
+                <a href="index.html" class="btn-invoice btn-home">
+                    <i class="fa-solid fa-house"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            
+            if (!orderId) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const orders = JSON.parse(localStorage.getItem('ds24_orders') || '[]');
+            const order = orders.find(o => o.orderId === orderId);
+
+            if (order) {
+                // Populate Invoice
+                document.getElementById('invoice-order-id').textContent = order.orderId;
+                document.getElementById('invoice-date').textContent = new Date(order.date).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                document.getElementById('cust-name').textContent = `${order.customer.firstName} ${order.customer.lastName}`;
+                document.getElementById('cust-address').textContent = order.customer.address;
+                document.getElementById('cust-location').textContent = order.customer.comment ? `Note: ${order.customer.comment}` : '';
+                document.getElementById('cust-phone').textContent = order.customer.mobile;
+                // Hide email if not present
+                const emailRow = document.getElementById('email-row');
+                if (order.customer.email) {
+                    document.getElementById('cust-email').textContent = order.customer.email;
+                } else {
+                    emailRow.style.display = 'none';
+                }
+
+                document.getElementById('pay-method').textContent = order.paymentMethod === 'cod' ? 'Cash on Delivery' : 
+                                                                  order.paymentMethod === 'online' ? 'Online Payment' : 'POS on Delivery';
+                document.getElementById('del-method').textContent = order.deliveryMethod === 'home' ? 'Home Delivery' : 
+                                                                  order.deliveryMethod === 'pickup' ? 'Store Pickup' : 'Express Delivery';
+
+                // Items
+                const itemsContainer = document.getElementById('invoice-items');
+                itemsContainer.innerHTML = order.items.map(item => `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td style="text-align: center;">${item.qty}</td>
+                        <td style="text-align: right;">৳${parseInt(item.price).toLocaleString()}</td>
+                        <td style="text-align: right;">৳${(item.price * item.qty).toLocaleString()}</td>
+                    </tr>
+                `).join('');
+
+                document.getElementById('inv-subtotal').textContent = `৳${order.subtotal.toLocaleString()}`;
+                document.getElementById('inv-delivery').textContent = `৳${order.deliveryCharge.toLocaleString()}`;
+                document.getElementById('inv-total').textContent = `৳${order.total.toLocaleString()}`;
+
+                // Maika Pixel: Track Purchase
+                if (typeof maika === 'function') {
+                    // Generate unique Event ID for Deduplication
+                    var currentTimestamp = Date.now();
+                    var randomString = Math.random().toString(36).substr(2, 9);
+                    var uniqueEventId = 'evt_' + currentTimestamp + '_' + randomString;
+
+                    // Dynamic Order Data
+                    var purchasedProductIds = order.items.map(item => String(item.id));
+                    var totalOrderValue = order.total;
+                    var totalItemsCount = order.items.reduce((sum, item) => sum + (item.qty || 1), 0);
+                    var transactionId = order.orderId;
+
+                    // Complete Purchase Data Payload
+                    var purchaseData = {
+                        event_id: uniqueEventId,
+                        content_ids: purchasedProductIds,
+                        content_type: 'product',
+                        value: totalOrderValue,
+                        currency: 'BDT',
+                        num_items: totalItemsCount,
+                        order_id: transactionId,
+                        source_url: window.location.href,
+
+                        // Customer Data for high match score
+                        raw_email: order.customer.email || '',
+                        raw_phone: order.customer.mobile || '',
+                        raw_first_name: order.customer.firstName || '',
+                        raw_last_name: order.customer.lastName || '',
+                        raw_city: '', // Can be extracted from address if needed
+                        raw_zip: '',
+                        raw_country: 'bd'
+                    };
+
+                    // Send data via Maika Pixel
+                    maika('track', 'Purchase', purchaseData);
+                }
+            }
+
+            // Update cart badge (should be 0 now)
+            const cart = JSON.parse(localStorage.getItem('ds24_cart') || '[]');
+            const badge = document.getElementById('cart-badge');
+            if (badge) {
+                badge.textContent = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
+            }
+        });
+    </script>
+</body>
+</html>

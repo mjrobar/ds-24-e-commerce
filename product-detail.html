@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail | DS-24</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product-detail.css">
+
+    <!-- Maika Pixel Universal Script -->
+    <script>
+    !function(m,a,i,k,e,p,x,l){m.MaikaPixelObject=e;m[e]=m[e]||function(){
+    (m[e].q=m[e].q||[]).push(arguments)};m[e].l=1*new Date();
+    p=a.createElement(i);x=a.getElementsByTagName(i)[0];
+    p.async=1;p.src=k;x.parentNode.insertBefore(p,x)
+    }(window,document,'script','http://localhost:3000/tracker.js','maika');
+
+    // Initialize with your Pixel ID
+    maika('init', '1247062284077136');
+
+    // Automatically track PageView on load
+    maika('track', 'PageView', {
+      page_name: document.title,
+      page_id: window.location.pathname,
+      source_url: window.location.href,
+      browser_name: navigator.appName,
+      user_agent: navigator.userAgent
+      // Browser ID (_fbp), Click ID (_fbc) will be handled by tracker.js
+    });
+    </script>
+    <!-- End Maika Pixel Universal Script -->
+</head>
+<body>
+
+    <!-- SECTION 1 — PRIMARY TOP BAR (Navbar) -->
+    <header class="primary-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">DS-24</a>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fa-solid fa-box-open"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="special-offers.html" class="nav-link">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>Special Offers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-right">
+                <div class="wishlist-nav-wrapper" id="wishlistNavBtn">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="wishlist-badge" id="wishlistBadge">0</span>
+                </div>
+                <a href="cart.html" class="cart-wrapper">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2 — SECONDARY TOP BAR (Search Bar Row) -->
+    <div class="secondary-navbar">
+        <div class="search-container">
+            <div class="category-wrapper">
+                <button class="category-btn" id="categoryBtn">
+                    <i class="fa-solid fa-th-large"></i>
+                    <span>Categories</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="category-dropdown" id="categoryDropdown">
+                    <ul class="category-list">
+                        <li class="category-item" data-category="Electronics">
+                            <a href="#">Electronics <i class="fa-solid fa-chevron-right"></i></a>
+                            <div class="sub-category">
+                                <ul>
+                                    <li><a href="#">Phones</a></li>
+                                    <li><a href="#">Laptops</a></li>
+                                    <li><a href="#">Accessories</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="category-item" data-category="Clothing">
+                            <a href="#">Clothing <i class="fa-solid fa-chevron-right"></i></a>
+                            <div class="sub-category">
+                                <ul>
+                                    <li><a href="#">Men</a></li>
+                                    <li><a href="#">Women</a></li>
+                                    <li><a href="#">Kids</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="category-item" data-category="Home & Kitchen">
+                            <a href="#">Home & Kitchen</a>
+                        </li>
+                        <li class="category-item" data-category="Toys">
+                            <a href="#">Toys</a>
+                        </li>
+                        <li class="category-item" data-category="Beauty">
+                            <a href="#">Beauty</a>
+                        </li>
+                        <li class="category-item" data-category="Sports">
+                            <a href="#">Sports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search products..." id="searchInput">
+            </div>
+        </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-section">
+        <div class="container breadcrumb-container">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="#">Products</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="#">Electronics</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span class="current-page" id="breadcrumb-product">Asus NUC 14 Essential Core 3 N355 Portable Mini PC</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- MAIN PRODUCT SECTION -->
+        <section class="product-main-section">
+            <div class="container product-grid-layout">
+                <!-- LEFT COLUMN — Image Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image-box">
+                        <img src="https://placehold.co/520x400" alt="Main Product Image" id="main-image" referrerPolicy="no-referrer">
+                    </div>
+                    <div class="thumbnail-row">
+                        <img src="https://placehold.co/72x72?text=Thumb+1" alt="Thumb 1" class="thumb active thumbnail-img" referrerPolicy="no-referrer">
+                        <img src="https://placehold.co/72x72?text=Thumb+2" alt="Thumb 2" class="thumb thumbnail-img" referrerPolicy="no-referrer">
+                        <img src="https://placehold.co/72x72?text=Thumb+3" alt="Thumb 3" class="thumb thumbnail-img" referrerPolicy="no-referrer">
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN — Product Info -->
+                <div class="product-info">
+                    <h1 class="product-title" id="product-title">Asus NUC 14 Essential Core 3 N355 Portable Mini PC</h1>
+                    
+                    <div class="info-tags-row">
+                        <div class="info-tag">
+                            <span class="tag-label">Price:</span>
+                            <span class="tag-value price-discounted" id="product-price">৳45,500</span>
+                            <span class="tag-value price-original" id="product-original">৳48,000</span>
+                        </div>
+                        <div class="info-tag" id="original-price-tag">
+                            <span class="tag-label">Regular Price:</span>
+                            <span class="tag-value" id="emi-regular-price">৳48,000</span>
+                        </div>
+                        <div class="info-tag">
+                            <span class="tag-label">Status:</span>
+                            <span class="tag-value status-in-stock" id="product-status">In Stock</span>
+                        </div>
+                        <div class="info-tag">
+                            <span class="tag-label">Product Code:</span>
+                            <span class="tag-value" id="product-code">34567</span>
+                        </div>
+                    </div>
+
+                    <div class="brand-tag">
+                        <span class="tag-label">Brand:</span>
+                        <span class="tag-value brand-name" id="product-brand">Asus</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="key-features">
+                        <h3>Key Features</h3>
+                        <ul class="features-list" id="features-list">
+                            <li>Model: NUC 14 Essential</li>
+                            <li>Processor: Intel Core 3 N355</li>
+                            <li>Graphics: Integrated, Intel Graphics</li>
+                            <li>WLAN: Intel Wi-Fi 6E AX211 (Gig+), Bluetooth 5.3</li>
+                            <div class="hidden-features" id="hiddenFeatures">
+                                <li>LAN: 1 x Realtek Ethernet Controller RTL8125BG-CG, 2.5G</li>
+                                <li>RAM: 8GB DDR5 (expandable to 64GB)</li>
+                                <li>Storage: 256GB M.2 NVMe SSD</li>
+                                <li>OS: No OS / Windows 11 Pro</li>
+                            </div>
+                        </ul>
+                        <button class="view-more-btn" id="viewMoreBtn">
+                            <span>View More Info</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="payment-options">
+                        <h3>Payment Options</h3>
+                        <div class="options-layout">
+                            <div class="payment-card selected" id="optionCash">
+                                <div class="radio-circle"></div>
+                                <div class="card-content">
+                                    <div class="price-row">
+                                        <span class="price" id="cash-price">৳45,500</span>
+                                        <span class="old-price" id="cash-original">৳48,000</span>
+                                    </div>
+                                    <p class="sub-label">Cash Discount Price</p>
+                                    <p class="sub-label">Online / Cash Payment</p>
+                                </div>
+                            </div>
+                            <div class="payment-card" id="optionEMI">
+                                <div class="radio-circle"></div>
+                                <div class="card-content">
+                                    <div class="price-row">
+                                        <span class="price">৳4,000/month</span>
+                                    </div>
+                                    <p class="sub-label">Regular Price: ৳48,000</p>
+                                    <p class="sub-label">0% EMI for up to 12 Months***</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="purchase-row">
+                        <div class="quantity-selector">
+                            <button class="qty-btn" id="qtyMinus"><i class="fa-solid fa-minus"></i></button>
+                            <div class="qty-display" id="qtyDisplay">1</div>
+                            <button class="qty-btn" id="qtyPlus"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                        <button class="buy-now-btn" id="buyNowBtn">
+                            <i class="fa-solid fa-shopping-bag"></i>
+                            <span>Buy Now</span>
+                        </button>
+                        <button class="action-icon-btn wishlist-toggle" id="detailWishlistBtn">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <button class="action-icon-btn whatsapp-btn" id="whatsapp-btn">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: TABBED CONTENT -->
+        <section id="tab-section">
+            <div class="tab-nav-container">
+                <div class="tab-nav">
+                    <button class="tab-btn" data-tab="tab-specification">
+                        Specification
+                    </button>
+                    <button class="tab-btn" data-tab="tab-description">
+                        Description
+                    </button>
+                    <button class="tab-btn" data-tab="tab-questions">
+                        Questions (0)
+                    </button>
+                    <button class="tab-btn" data-tab="tab-reviews">
+                        Reviews (0)
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content-container">
+                <!-- PANEL 1 — Specification -->
+                <div id="tab-specification" class="tab-panel">
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Basic Information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="spec-label">Processor</td>
+                                <td class="spec-value">Intel Core 3-N355 Processor, TDP 15W</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">RAM</td>
+                                <td class="spec-value">Supported DDR5 Laptop RAM</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Graphics Card</td>
+                                <td class="spec-value">Integrated, Intel Graphics</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Storage</td>
+                                <td class="spec-value">Supported NVMe SSD</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Audio</td>
+                                <td class="spec-value">Realtek ALC3251</td>
+                            </tr>
+                        </tbody>
+
+                        <thead>
+                            <tr>
+                                <th colspan="2">Network & Wireless Connectivity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="spec-label">WiFi</td>
+                                <td class="spec-value">Intel® Wi-Fi 6E AX211 (Gig+), Bluetooth 5.3</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">LAN</td>
+                                <td class="spec-value">1 x Realtek Ethernet Controller RTL8125BG-CG, 2.5G</td>
+                            </tr>
+                        </tbody>
+
+                        <thead>
+                            <tr>
+                                <th colspan="2">External I/O Ports</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="spec-label">Front & Side</td>
+                                <td class="spec-value">
+                                    1 x USB 3.2 Gen2 Type-C<br>
+                                    2 x USB 3.2 Gen2 Type-A<br>
+                                    1 x 3.5mm Headset Jack<br>
+                                    1 x Kensington Lock
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Back I/O</td>
+                                <td class="spec-value">
+                                    1 x USB 3.2 Gen2 Type-C w/ DisplayPort 1.4<br>
+                                    2 x USB 3.2 Gen 2 Type-A<br>
+                                    1 x USB 2.0 Type-A<br>
+                                    1 x HDMI 2.1 (TMDS)<br>
+                                    1 x DisplayPort 1.4<br>
+                                    1 x RJ45 LAN<br>
+                                    1 x DC-in
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <thead>
+                            <tr>
+                                <th colspan="2">Physical Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="spec-label">Dimension</td>
+                                <td class="spec-value">135mm x 115mm x 36mm</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Weight</td>
+                                <td class="spec-value">470g</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Color</td>
+                                <td class="spec-value">Black</td>
+                            </tr>
+                        </tbody>
+
+                        <thead>
+                            <tr>
+                                <th colspan="2">Warranty Information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="spec-label">Warranty</td>
+                                <td class="spec-value">3 years</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PANEL 2 — Description -->
+                <div id="tab-description" class="tab-panel">
+                    <div class="description-content">
+                        <h2 class="desc-main-heading">Asus NUC 14 Essential Core 3 N355 Mini PC</h2>
+                        <p class="desc-para">
+                            The Asus NUC 14 Essential Core 3 N355 Mini PC is a compact and versatile computing solution designed for everyday tasks, home entertainment, and business applications. Powered by the Intel Core 3 N355 processor, it delivers efficient performance while maintaining a small footprint, making it ideal for environments where space is at a premium. With support for high-speed DDR5 memory and NVMe storage, this mini PC ensures responsive multitasking and quick data access.
+                        </p>
+
+                        <h3 class="desc-sub-heading">Efficient Performance with Low Power Consumption</h3>
+                        <p class="desc-para">
+                            Equipped with the Intel Core 3 N355 processor, the NUC 14 Essential offers a balance of power and efficiency. With a 15W TDP, it provides reliable performance for web browsing, document editing, and media streaming without excessive energy consumption. The integrated Intel Graphics further enhance the visual experience, supporting clear and vibrant displays for both work and play.
+                        </p>
+
+                        <h3 class="desc-sub-heading">Multitask with Triple Display Support</h3>
+                        <p class="desc-para">
+                            Despite its small size, the Asus NUC 14 Essential is a powerhouse for productivity. It features multiple display outputs, including HDMI 2.1, DisplayPort 1.4, and USB-C with DisplayPort support, allowing you to connect up to three displays simultaneously. This triple display capability enables seamless multitasking, perfect for professionals who need an expanded workspace or home users looking for an immersive multi-monitor setup.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PANEL 3 — Questions (0) -->
+                <div id="tab-questions" class="tab-panel">
+                    <div class="empty-state">
+                        <i class="fa-solid fa-comments"></i>
+                        <h3>No Questions Yet</h3>
+                        <p>Have a question about this product? Be the first to ask.</p>
+                        <button class="empty-state-btn" onclick="alert('Question form coming soon!')">
+                            <i class="fa-solid fa-plus"></i>
+                            Ask a Question
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PANEL 4 — Reviews (0) -->
+                <div id="tab-reviews" class="tab-panel">
+                    <div class="empty-state">
+                        <i class="fa-solid fa-star"></i>
+                        <h3>No Reviews Yet</h3>
+                        <p>Be the first to share your experience with this product.</p>
+                        
+                        <div class="star-rating-input">
+                            <i class="fa-solid fa-star" data-rating="1"></i>
+                            <i class="fa-solid fa-star" data-rating="2"></i>
+                            <i class="fa-solid fa-star" data-rating="3"></i>
+                            <i class="fa-solid fa-star" data-rating="4"></i>
+                            <i class="fa-solid fa-star" data-rating="5"></i>
+                        </div>
+
+                        <button class="empty-state-btn" onclick="alert('Review form coming soon!')">
+                            <i class="fa-solid fa-pencil"></i>
+                            Write a Review
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RELATED PRODUCTS SECTION -->
+        <section class="related-products-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Related Products</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="product-grid" id="relatedGrid">
+                    <!-- Card 1 -->
+                    <div class="product-card">
+                        <div class="product-image-container" onclick="window.location.href='product-detail.html'">
+                            <img src="https://placehold.co/400x200?text=Related+1" alt="Related 1" class="product-image" referrerPolicy="no-referrer">
+                        </div>
+                        <h3 class="product-name" onclick="window.location.href='product-detail.html'">Asus VivoMini VC66-C2 Mini PC</h3>
+                        <p class="product-desc">Intel Core i5-10400, 8GB RAM, 256GB SSD</p>
+                        <div class="product-price-row">
+                            <span class="current-price">৳55,000</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="wishlist-btn" data-id="201"><i class="fa-solid fa-heart"></i></button>
+                            <button class="order-btn">Order Now</button>
+                            <button class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="product-card">
+                        <div class="product-image-container" onclick="window.location.href='product-detail.html'">
+                            <img src="https://placehold.co/400x200?text=Related+2" alt="Related 2" class="product-image" referrerPolicy="no-referrer">
+                        </div>
+                        <h3 class="product-name" onclick="window.location.href='product-detail.html'">Intel NUC 12 Pro Kit Wall Street Canyon</h3>
+                        <p class="product-desc">Core i7-1260P, Intel Iris Xe Graphics</p>
+                        <div class="product-price-row">
+                            <span class="current-price">৳68,500</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="wishlist-btn" data-id="202"><i class="fa-solid fa-heart"></i></button>
+                            <button class="order-btn">Order Now</button>
+                            <button class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="product-card">
+                        <div class="product-image-container" onclick="window.location.href='product-detail.html'">
+                            <img src="https://placehold.co/400x200?text=Related+3" alt="Related 3" class="product-image" referrerPolicy="no-referrer">
+                        </div>
+                        <h3 class="product-name" onclick="window.location.href='product-detail.html'">Gigabyte BRIX GB-BMCE-4500C</h3>
+                        <p class="product-desc">Intel Celeron N4500, Ultra Compact PC</p>
+                        <div class="product-price-row">
+                            <span class="current-price">৳18,200</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="wishlist-btn" data-id="203"><i class="fa-solid fa-heart"></i></button>
+                            <button class="order-btn">Order Now</button>
+                            <button class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="product-card">
+                        <div class="product-image-container" onclick="window.location.href='product-detail.html'">
+                            <img src="https://placehold.co/400x200?text=Related+4" alt="Related 4" class="product-image" referrerPolicy="no-referrer">
+                        </div>
+                        <h3 class="product-name" onclick="window.location.href='product-detail.html'">MSI Cubi 5 12M Mini PC</h3>
+                        <p class="product-desc">Intel Core i3-1215U, 4GB RAM, 128GB SSD</p>
+                        <div class="product-price-row">
+                            <span class="current-price">৳38,000</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="wishlist-btn" data-id="204"><i class="fa-solid fa-heart"></i></button>
+                            <button class="order-btn">Order Now</button>
+                            <button class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="product-card">
+                        <div class="product-image-container" onclick="window.location.href='product-detail.html'">
+                            <img src="https://placehold.co/400x200?text=Related+5" alt="Related 5" class="product-image" referrerPolicy="no-referrer">
+                        </div>
+                        <h3 class="product-name" onclick="window.location.href='product-detail.html'">Apple Mac Studio M2 Max</h3>
+                        <p class="product-desc">12-Core CPU, 30-Core GPU, 32GB RAM</p>
+                        <div class="product-price-row">
+                            <span class="current-price">৳245,000</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="wishlist-btn" data-id="205"><i class="fa-solid fa-heart"></i></button>
+                            <button class="order-btn">Order Now</button>
+                            <button class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SECTION 6 — FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1 -->
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <div class="footer-btn-group">
+                        <a href="tel:+8801XXX-XXXXXX" class="footer-btn">
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="divider"></div>
+                            <span class="red-text">+880 1XXX-XXXXXX</span>
+                        </a>
+                        <a href="mailto:support@ds24.com" class="footer-btn">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="divider"></div>
+                            <span class="red-text">support@ds24.com</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 2 -->
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <ul class="footer-links">
+                        <li>Affiliate Marketing</li>
+                        <li>Online Delivery</li>
+                        <li>Return Policy</li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
+                <!-- Column 3 -->
+                <div class="footer-col">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li>Privacy Policy</li>
+                        <li>Support</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+                <!-- Column 4 -->
+                <div class="footer-col">
+                    <h3>Connect Us</h3>
+                    <div class="store-info">
+                        <p class="store-name">DS-24 Store</p>
+                        <p class="store-address">Basundhara R/A, 112/A, K-Block, Dhaka 1229</p>
+                        <a href="https://maps.google.com" target="_blank" class="map-link">📍 View on Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-row-2">
+                <div class="app-download">
+                    <p>Download our app and get better results:</p>
+                    <a href="#" class="play-store-btn">
+                        <i class="fa-brands fa-google-play"></i>
+                        <span>Download on Google Play</span>
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-copyright">
+                <p>DS-24 | All rights reserved</p>
+                <p>Powered by: 24 Digital Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- CART MODAL POPUP -->
+    <div id="cart-modal-overlay" class="modal-overlay">
+      <div class="cart-modal">
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+          <div class="modal-title-row">
+            <span class="modal-check-icon">
+              <i class="fa-solid fa-circle-check"></i>
+            </span>
+            <div class="modal-title-text">
+              <span class="modal-pre-title">Add to Cart</span>
+              <h3 id="modal-product-name">Product Name Here</h3>
+            </div>
+          </div>
+          <button class="modal-close-btn" id="modal-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+
+          <!-- LEFT SIDE -->
+          <div class="modal-left">
+
+            <!-- Product Info Row -->
+            <div class="modal-product-info">
+              <img id="modal-product-image" 
+                   src="https://placehold.co/80x80" 
+                   alt="Product">
+              <div class="modal-product-details">
+                <p id="modal-product-name-sm"></p>
+                <span id="modal-product-code"></span>
+              </div>
+            </div>
+
+            <!-- Question Text -->
+            <p class="modal-question">
+              Do you want to add this product to cart or 
+              confirm the order?
+            </p>
+
+            <!-- TWO ACTION BUTTONS -->
+            <div class="modal-action-btns">
+
+              <!-- Button 1: View Cart (default selected/filled) -->
+              <button class="modal-btn btn-view-cart active-btn" 
+                      id="btn-view-cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                View Cart
+              </button>
+
+              <!-- Button 2: Confirmed Order (outline only) -->
+              <button class="modal-btn btn-confirm-order" 
+                      id="btn-confirm-order">
+                <i class="fa-solid fa-bolt"></i>
+                Confirmed Order
+              </button>
+
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE -->
+          <div class="modal-right">
+
+            <!-- QTY BOX -->
+            <div class="modal-box">
+              <p class="modal-box-label">Quantity</p>
+              <div class="modal-qty-row">
+                <button class="qty-btn" id="modal-qty-minus">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <span id="modal-qty-display">1</span>
+                <button class="qty-btn" id="modal-qty-plus">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- TOTAL PRICE BOX -->
+            <div class="modal-box">
+              <p class="modal-box-label">Total Price</p>
+              <p class="modal-total-price" id="modal-total-price">
+                ৳0
+              </p>
+              <p class="modal-unit-price" id="modal-unit-price">
+                ৳0 / unit
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Shared JS for common components -->
+    <script src="script.js"></script>
+    <!-- Custom JS -->
+    <script src="product-detail.js"></script>
+</body>
+</html>

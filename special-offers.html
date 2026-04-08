@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers | DS-24</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="special-offers.css">
+
+    <!-- Maika Pixel Universal Script -->
+    <script>
+    !function(m,a,i,k,e,p,x,l){m.MaikaPixelObject=e;m[e]=m[e]||function(){
+    (m[e].q=m[e].q||[]).push(arguments)};m[e].l=1*new Date();
+    p=a.createElement(i);x=a.getElementsByTagName(i)[0];
+    p.async=1;p.src=k;x.parentNode.insertBefore(p,x)
+    }(window,document,'script','http://localhost:3000/tracker.js','maika');
+
+    // Initialize with your Pixel ID
+    maika('init', '1247062284077136');
+
+    // Automatically track PageView on load
+    maika('track', 'PageView', {
+      page_name: document.title,
+      page_id: window.location.pathname,
+      source_url: window.location.href,
+      browser_name: navigator.appName,
+      user_agent: navigator.userAgent
+      // Browser ID (_fbp), Click ID (_fbc) will be handled by tracker.js
+    });
+    </script>
+    <!-- End Maika Pixel Universal Script -->
+</head>
+<body>
+
+    <!-- SECTION 1 — PRIMARY TOP BAR (Navbar) -->
+    <header class="primary-navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">DS-24</a>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="products.html" class="nav-link">
+                            <i class="fa-solid fa-box-open"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="special-offers.html" class="nav-link active">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>Special Offers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-right">
+                <div class="wishlist-nav-wrapper" id="wishlistNavBtn">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="wishlist-badge" id="wishlistBadge">0</span>
+                </div>
+                <a href="cart.html" class="cart-wrapper">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2 — SECONDARY TOP BAR (Search Bar Row) -->
+    <div class="secondary-navbar">
+        <div class="search-container">
+            <div class="category-wrapper">
+                <button class="category-btn" id="categoryBtn">
+                    <i class="fa-solid fa-th-large"></i>
+                    <span>Categories</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="category-dropdown" id="categoryDropdown">
+                    <ul class="category-list">
+                        <li class="category-item" data-category="Electronics">
+                            <a href="products.html?category=electronics">Electronics <i class="fa-solid fa-chevron-right"></i></a>
+                            <div class="sub-category">
+                                <ul>
+                                    <li><a href="products.html?category=electronics">Phones</a></li>
+                                    <li><a href="products.html?category=electronics">Laptops</a></li>
+                                    <li><a href="products.html?category=electronics">Accessories</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="category-item" data-category="Clothing">
+                            <a href="products.html?category=clothing">Clothing <i class="fa-solid fa-chevron-right"></i></a>
+                            <div class="sub-category">
+                                <ul>
+                                    <li><a href="products.html?category=clothing">Men</a></li>
+                                    <li><a href="products.html?category=clothing">Women</a></li>
+                                    <li><a href="products.html?category=clothing">Kids</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="category-item" data-category="Home & Kitchen">
+                            <a href="products.html?category=home">Home & Kitchen</a>
+                        </li>
+                        <li class="category-item" data-category="Toys">
+                            <a href="products.html?category=toys">Toys</a>
+                        </li>
+                        <li class="category-item" data-category="Beauty">
+                            <a href="products.html?category=beauty">Beauty</a>
+                        </li>
+                        <li class="category-item" data-category="Sports">
+                            <a href="products.html?category=sports">Sports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search products..." id="searchInput">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- SECTION 1 — HERO BANNER -->
+        <section class="offers-hero">
+            <!-- Decorative Circles -->
+            <div class="hero-circle circle-1"></div>
+            <div class="hero-circle circle-2"></div>
+            <div class="hero-circle circle-3"></div>
+            
+            <!-- Floating Dots -->
+            <div class="float-dot dot-1"></div>
+            <div class="float-dot dot-2"></div>
+            <div class="float-dot dot-3"></div>
+            <div class="float-dot dot-4"></div>
+
+            <div class="hero-content">
+                <span class="hero-label">🔥 LIMITED TIME DEALS</span>
+                <h1>Special Offers</h1>
+                <p class="hero-subtitle">Exclusive deals, handpicked just for you</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="hero-total-deals">0</span>
+                        <span class="stat-label">Active Deals</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="hero-total-saved">৳5,000+</span>
+                        <span class="stat-label">Max Savings</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 — FLASH SALE BANNER -->
+        <div class="flash-sale-strip">
+            <div class="flash-label">
+                <i class="fa-solid fa-bolt"></i>
+                <span>FLASH SALE</span>
+            </div>
+            <div class="flash-timer-wrap">
+                <span class="ends-in">Ends in:</span>
+                <div class="flash-countdown">
+                    <div class="flash-box">
+                        <span class="flash-num" id="flash-days">00</span>
+                        <span class="flash-unit">DAYS</span>
+                    </div>
+                    <span class="flash-sep">:</span>
+                    <div class="flash-box">
+                        <span class="flash-num" id="flash-hours">00</span>
+                        <span class="flash-unit">HRS</span>
+                    </div>
+                    <span class="flash-sep">:</span>
+                    <div class="flash-box">
+                        <span class="flash-num" id="flash-mins">00</span>
+                        <span class="flash-unit">MIN</span>
+                    </div>
+                    <span class="flash-sep">:</span>
+                    <div class="flash-box">
+                        <span class="flash-num" id="flash-secs">00</span>
+                        <span class="flash-unit">SEC</span>
+                    </div>
+                </div>
+            </div>
+            <button class="flash-btn">Shop Flash Sale</button>
+        </div>
+
+        <!-- SECTION 4 — OFFER CATEGORY TABS -->
+        <section class="offer-tabs-container">
+            <div class="offer-tabs-bar">
+                <button class="offer-tab-btn active" data-filter="all">🔥 All Deals</button>
+                <button class="offer-tab-btn" data-filter="flash">⚡ Flash Sale</button>
+                <button class="offer-tab-btn" data-filter="bundle">🏷️ Bundle Deals</button>
+                <button class="offer-tab-btn" data-filter="new">🆕 New Arrivals</button>
+                <button class="offer-tab-btn" data-filter="bestseller">⭐ Bestsellers</button>
+            </div>
+        </section>
+
+        <!-- SECTION 5 — OFFER CARDS GRID -->
+        <section class="offers-grid-container">
+            <div class="offers-grid" id="offers-grid">
+                <!-- Cards rendered by JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 6 — URGENCY STRIP -->
+        <div class="urgency-strip">
+            <div class="urgency-item">
+                <i class="fa-solid fa-shield-halved" style="color: #16A34A;"></i>
+                <div class="urgency-text">
+                    <h4>Secure Checkout</h4>
+                    <p>SSL encrypted</p>
+                </div>
+            </div>
+            <div class="urgency-item">
+                <i class="fa-solid fa-rotate-left" style="color: #E84C0A;"></i>
+                <div class="urgency-text">
+                    <h4>Easy Returns</h4>
+                    <p>7-day return policy</p>
+                </div>
+            </div>
+            <div class="urgency-item">
+                <i class="fa-solid fa-headset" style="color: #F59E0B;"></i>
+                <div class="urgency-text">
+                    <h4>24/7 Support</h4>
+                    <p>Always here for you</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1 -->
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <div class="footer-btn-group">
+                        <a href="tel:+8801XXX-XXXXXX" class="footer-btn">
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="divider"></div>
+                            <span class="red-text">+880 1XXX-XXXXXX</span>
+                        </a>
+                        <a href="mailto:support@ds24.com" class="footer-btn">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="divider"></div>
+                            <span class="red-text">support@ds24.com</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 2 -->
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <ul class="footer-links">
+                        <li>Affiliate Marketing</li>
+                        <li>Online Delivery</li>
+                        <li>Return Policy</li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
+                <!-- Column 3 -->
+                <div class="footer-col">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li>Privacy Policy</li>
+                        <li>Support</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+                <!-- Column 4 -->
+                <div class="footer-col">
+                    <h3>Connect Us</h3>
+                    <div class="store-info">
+                        <p class="store-name">DS-24 Store</p>
+                        <p class="store-address">Basundhara R/A, 112/A, K-Block, Dhaka 1229</p>
+                        <a href="https://maps.google.com" target="_blank" class="map-link">📍 View on Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-row-2">
+                <div class="app-download">
+                    <p>Download our app and get better results:</p>
+                    <a href="#" class="play-store-btn">
+                        <i class="fa-brands fa-google-play"></i>
+                        <span>Download on Google Play</span>
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-copyright">
+                <p>DS-24 | All rights reserved</p>
+                <p>Powered by: 24 Digital Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- CART MODAL POPUP -->
+    <div id="cart-modal-overlay" class="modal-overlay">
+      <div class="cart-modal">
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+          <div class="modal-title-row">
+            <span class="modal-check-icon">
+              <i class="fa-solid fa-circle-check"></i>
+            </span>
+            <div class="modal-title-text">
+              <span class="modal-pre-title">Add to Cart</span>
+              <h3 id="modal-product-name">Product Name Here</h3>
+            </div>
+          </div>
+          <button class="modal-close-btn" id="modal-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- MODAL BODY -->
+        <div class="modal-body">
+          <!-- LEFT SIDE -->
+          <div class="modal-left">
+            <div class="modal-product-info">
+              <img id="modal-product-image" src="https://placehold.co/80x80" alt="Product">
+              <div class="modal-product-details">
+                <p id="modal-product-name-sm"></p>
+                <span id="modal-product-code"></span>
+              </div>
+            </div>
+            <p class="modal-question">Do you want to add this product to cart or confirm the order?</p>
+            <div class="modal-action-btns">
+              <button class="modal-btn btn-view-cart active-btn" id="btn-view-cart">
+                <i class="fa-solid fa-cart-shopping"></i> View Cart
+              </button>
+              <button class="modal-btn btn-confirm-order" id="btn-confirm-order">
+                <i class="fa-solid fa-bolt"></i> Confirmed Order
+              </button>
+            </div>
+          </div>
+          <!-- RIGHT SIDE -->
+          <div class="modal-right">
+            <div class="modal-box">
+              <p class="modal-box-label">Quantity</p>
+              <div class="modal-qty-row">
+                <button class="qty-btn" id="modal-qty-minus"><i class="fa-solid fa-minus"></i></button>
+                <span id="modal-qty-display">1</span>
+                <button class="qty-btn" id="modal-qty-plus"><i class="fa-solid fa-plus"></i></button>
+              </div>
+            </div>
+            <div class="modal-box">
+              <p class="modal-box-label">Total Price</p>
+              <p class="modal-total-price" id="modal-total-price">৳0</p>
+              <p class="modal-unit-price" id="modal-unit-price">৳0 / unit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script src="special-offers.js"></script>
+</body>
+</html>
