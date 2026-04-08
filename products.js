@@ -673,18 +673,24 @@ function applyFilters() {
 
     // 4. Dynamic attribute filters
     const activeCheckboxes = document.querySelectorAll('.filter-body input[type="checkbox"]:checked');
-    if (activeCheckboxes.length > 0) {
-        // Group by filter type for OR within same type, AND across different types
-        const groupedFilters = {};
-        activeCheckboxes.forEach(cb => {
-            const type = cb.dataset.filter;
+    const groupedFilters = {};
+    let hasDynamicFilters = false;
+
+    activeCheckboxes.forEach(cb => {
+        const type = cb.dataset.filter;
+        // Only process if it's a dynamic filter (has data-filter attribute)
+        if (type) {
+            hasDynamicFilters = true;
             if (!groupedFilters[type]) groupedFilters[type] = [];
             groupedFilters[type].push(cb.value);
-        });
+        }
+    });
 
+    if (hasDynamicFilters) {
+        // Group by filter type for OR within same type, AND across different types
         Object.keys(groupedFilters).forEach(type => {
             filtered = filtered.filter(p => {
-                const val = p[type]?.toLowerCase();
+                const val = p[type]?.toString().toLowerCase();
                 return groupedFilters[type].includes(val);
             });
         });
@@ -811,7 +817,7 @@ function setupEventListeners() {
     // Clear All
     document.getElementById('clear-all-filters').addEventListener('click', () => {
         document.getElementById('price-min').value = 0;
-        document.getElementById('price-max').value = 100000;
+        document.getElementById('price-max').value = 250000;
         document.querySelectorAll('.filter-sidebar input[type="checkbox"]').forEach(cb => cb.checked = false);
         initPriceSlider();
         applyFilters();
