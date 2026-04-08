@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/products", "destination": "/products.html" },
+    { "source": "/cart", "destination": "/cart.html" },
+    { "source": "/checkout", "destination": "/checkout.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/product-detail", "destination": "/product-detail.html" },
+    { "source": "/order-success", "destination": "/order-success.html" },
+    { "source": "/special-offers", "destination": "/special-offers.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ]
+}

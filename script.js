@@ -90,16 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryBtn = document.getElementById('categoryBtn');
     const categoryDropdown = document.getElementById('categoryDropdown');
 
-    categoryBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        categoryDropdown.classList.toggle('active');
-    });
+    if (categoryBtn && categoryDropdown) {
+        categoryBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            categoryDropdown.classList.toggle('active');
+        });
 
-    document.addEventListener('click', (e) => {
-        if (!categoryBtn.contains(e.target) && !categoryDropdown.contains(e.target)) {
-            categoryDropdown.classList.remove('active');
-        }
-    });
+        document.addEventListener('click', (e) => {
+            if (!categoryBtn.contains(e.target) && !categoryDropdown.contains(e.target)) {
+                categoryDropdown.classList.remove('active');
+            }
+        });
+    }
 
     // 3. Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobileToggle');
@@ -110,24 +112,26 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.className = 'nav-overlay';
     document.body.appendChild(overlay);
 
-    mobileToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('mobile-active');
-        overlay.classList.toggle('active');
-        
-        // Change icon
-        const icon = mobileToggle.querySelector('i');
-        if (navMenu.classList.contains('mobile-active')) {
-            icon.classList.replace('fa-bars', 'fa-times');
-        } else {
-            icon.classList.replace('fa-times', 'fa-bars');
-        }
-    });
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('mobile-active');
+            overlay.classList.toggle('active');
+            
+            // Change icon
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('mobile-active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
 
-    overlay.addEventListener('click', () => {
-        navMenu.classList.remove('mobile-active');
-        overlay.classList.remove('active');
-        mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
-    });
+        overlay.addEventListener('click', () => {
+            navMenu.classList.remove('mobile-active');
+            overlay.classList.remove('active');
+            mobileToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+        });
+    }
 
     // =============================================================
     // CART & MODAL LOGIC
@@ -320,20 +324,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Back to Top Button
     const backToTopBtn = document.getElementById('backToTop');
 
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    });
-
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
         });
-    });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     // 5. Generate Sample Products
     const productGrid = document.getElementById('productGrid');

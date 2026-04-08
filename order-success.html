@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
     (m[e].q=m[e].q||[]).push(arguments)};m[e].l=1*new Date();
     p=a.createElement(i);x=a.getElementsByTagName(i)[0];
     p.async=1;p.src=k;x.parentNode.insertBefore(p,x)
-    }(window,document,'script','http://localhost:3000/tracker.js','maika');
+    }(window,document,'script','https://maika-pixel.vercel.app/tracker.js','maika');
 
     // Initialize with your Pixel ID
     maika('init', '1247062284077136');
@@ -407,15 +407,15 @@
                     <div class="summary-box">
                         <div class="summary-line">
                             <span>Sub-Total</span>
-                            <span id="inv-subtotal">৳0</span>
+                            <span id="inv-subtotal">à§³0</span>
                         </div>
                         <div class="summary-line">
                             <span>Delivery Charge</span>
-                            <span id="inv-delivery">৳0</span>
+                            <span id="inv-delivery">à§³0</span>
                         </div>
                         <div class="summary-line total">
                             <span>Grand Total</span>
-                            <span id="inv-total">৳0</span>
+                            <span id="inv-total">à§³0</span>
                         </div>
                     </div>
                 </div>
@@ -476,14 +476,14 @@
                     <tr>
                         <td>${item.name}</td>
                         <td style="text-align: center;">${item.qty}</td>
-                        <td style="text-align: right;">৳${parseInt(item.price).toLocaleString()}</td>
-                        <td style="text-align: right;">৳${(item.price * item.qty).toLocaleString()}</td>
+                        <td style="text-align: right;">à§³${parseInt(item.price).toLocaleString()}</td>
+                        <td style="text-align: right;">à§³${(item.price * item.qty).toLocaleString()}</td>
                     </tr>
                 `).join('');
 
-                document.getElementById('inv-subtotal').textContent = `৳${order.subtotal.toLocaleString()}`;
-                document.getElementById('inv-delivery').textContent = `৳${order.deliveryCharge.toLocaleString()}`;
-                document.getElementById('inv-total').textContent = `৳${order.total.toLocaleString()}`;
+                document.getElementById('inv-subtotal').textContent = `à§³${order.subtotal.toLocaleString()}`;
+                document.getElementById('inv-delivery').textContent = `à§³${order.deliveryCharge.toLocaleString()}`;
+                document.getElementById('inv-total').textContent = `à§³${order.total.toLocaleString()}`;
 
                 // Maika Pixel: Track Purchase
                 if (typeof maika === 'function') {
@@ -534,3 +534,5 @@
     </script>
 </body>
 </html>
+
+
